@@ -22,7 +22,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <ItemListContainer/>
+      <ItemListContainer greeting="Bienvenidos a Zeus Ecommerce"/>
     </div>
   );
 }

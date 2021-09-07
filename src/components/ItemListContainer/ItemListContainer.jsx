@@ -5,11 +5,14 @@ import ItemList from "./Item/ItemList";
 function ItemListContainer({greeting}) {
 
     const [todos, setTodos] = useState([]);
-
+    const [loading, setLoading] = useState(true);
     const fetchApi = async ()=>{
         await axios.get('https://cruce-app.herokuapp.com/products')
         .then(response => {
-            setTodos(response.data);
+            setTimeout(() => {
+                setTodos(response.data);
+                setLoading(false);
+            }, 2000);
         }).catch(error => {
             console.log(error);
         });
@@ -19,14 +22,17 @@ function ItemListContainer({greeting}) {
         fetchApi();
     }, [])
 
+    
+
     return (
         <React.Fragment>
             <p>{greeting}</p>
+            
             <div className='f'>
                 <div className='container'>
                     <div className='row'>
-                        {!todos ? (
-                            '...cargando'
+                        {loading ? (
+                            'cargando'
                         ) : (
                         <ItemList todos={todos}/>
                         )}

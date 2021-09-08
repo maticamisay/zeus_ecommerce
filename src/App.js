@@ -1,4 +1,5 @@
-import logo from './logo.svg';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,24 +9,19 @@ function App() {
 
 
   return (
-    <div className="App">
-      <NavBar/>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <ItemListContainer greeting="Bienvenidos a Zeus Ecommerce"/>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <NavBar/>
+        
+        <Switch>
+          <Route exact path='/'>
+            <ItemListContainer greeting="Bienvenidos a Zeus Ecommerce"/>
+          </Route>
+        </Switch>
+
+        
+      </div>
+    </BrowserRouter>
   );
 }
 

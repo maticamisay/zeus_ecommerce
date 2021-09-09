@@ -7,7 +7,7 @@ function ItemListContainer({greeting}) {
     const [todos, setTodos] = useState([]);
     const [loading, setLoading] = useState(true);
     const fetchApi = async ()=>{
-        await axios.get('https://cruce-app.herokuapp.com/products')
+        await axios.get('https://maticamisay.github.io/base-de-datos/base-de-datos.json')
         .then(response => {
             setTimeout(() => {
                 setTodos(response.data);

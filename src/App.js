@@ -4,6 +4,7 @@ import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemDetailContainer from './components/ItemListContainer/Item/ItemDetailContainer';
 
 function App() {
 
@@ -16,6 +17,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <ItemListContainer greeting="Bienvenidos a Zeus Ecommerce"/>
+          </Route>
+          <Route exact path='/detalle'>
+            <ItemDetailContainer/>
           </Route>
         </Switch>
 

@@ -1,13 +1,9 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemCount from './ItemCount';
 import './item.css';
 
-function Item({ item }) {
-    const onAdd = (count)=>{
-        alert(`La cantidad es: ${count}`)
-    }
-
+function ItemDetail( {producto} ) {
+    // const { producto} = props;
     return (
         <React.Fragment>
             <div
@@ -16,14 +12,15 @@ function Item({ item }) {
             >
                 <div className='card-ecommerce'>
                     <i className="icon-favorites-card far fa-heart" />
-                    <img className="img-item" src={item.url} alt="" />
-                    <h2 className="name">{item.nombre}</h2>
-                    <h2 className="price">{item.precio}</h2>
-                    <ItemCount initial={1} stock={5} onAdd={onAdd}/>
+                    <img className="img-item" src={producto.url} alt="" />
+                    <h2 className="name">{producto.nombre}</h2>
+                    <h2 className="price">${producto.precio}</h2>
+                    <p>{producto.descripcion}</p>
+                    {/* <ItemCount initial={1} stock={5} onAdd={onAdd}/> */}
                 </div>
             </div>
         </React.Fragment>
     )
 }
 
-export default Item
+export default ItemDetail

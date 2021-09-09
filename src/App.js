@@ -1,5 +1,4 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,9 +17,15 @@ function App() {
           <Route exact path='/'>
             <ItemListContainer greeting="Bienvenidos a Zeus Ecommerce"/>
           </Route>
+
+          <Route exact path='/categoria/:category'>
+            <ItemListContainer greeting={'hola'} />
+          </Route>
+
           <Route exact path='/detalle'>
             <ItemDetailContainer/>
           </Route>
+
         </Switch>
 
         

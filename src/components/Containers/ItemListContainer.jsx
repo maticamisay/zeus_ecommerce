@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from "react-router";
 import { tarea } from "../../utils/promesas";
-import ItemList from "./Item/ItemList";
+import ItemList from "../Item/ItemList";
 
 function ItemListContainer({greeting}) {
 

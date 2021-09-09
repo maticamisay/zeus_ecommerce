@@ -2,11 +2,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemDetailContainer from './components/ItemListContainer/Item/ItemDetailContainer';
+import ItemListContainer from './components/Containers/ItemListContainer';
+import ItemDetailContainer from './components/Containers/ItemDetailContainer';
 
 function App() {
-
 
   return (
     <BrowserRouter>
@@ -22,7 +21,7 @@ function App() {
             <ItemListContainer />
           </Route>
 
-          <Route exact path='/detalle'>
+          <Route exact path='/detalle/:id'>
             <ItemDetailContainer/>
           </Route>
 

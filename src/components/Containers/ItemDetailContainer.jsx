@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ItemDetail from "./ItemDetail";
+import ItemDetail from "../Item/ItemDetail";
 import axios from "axios";
 
 //codigo js

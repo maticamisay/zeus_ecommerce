@@ -23,7 +23,6 @@ function ItemDetailContainer() {
         fetchApi();
     }, [])
 
-    console.log(producto);
 
     return (
         <>

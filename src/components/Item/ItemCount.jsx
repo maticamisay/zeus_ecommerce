@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function ItemCount({initial, stock, onAdd}) {
+function ItemCount({initial, stock, onAdd, id}) {
     const [count, setCount] = useState(initial)
     const handlerAdd = () =>{
         if(count<stock) {

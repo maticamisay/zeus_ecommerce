@@ -11,18 +11,6 @@ function Item({ item }) {
 
     return (
         <React.Fragment>
-            {/* <div
-                data-aos='fade-up'
-                className='col-12 col-md-6 col-lg-4 col-xl-3'
-            >
-                <div className='card-ecommerce'>
-                    <i className="icon-favorites-card far fa-heart" />
-                    <img className="img-item"  alt="" />
-                    <h2 className="name"></h2>
-                    <h2 className="price"></h2>
-                    
-                </div>
-            </div> */}
             <Card className="m-5" style={{ width: '18rem' }}>
                 <Card.Img className="img-item m-auto" variant="top" src={item.url} />
                 <Card.Body>
@@ -33,7 +21,7 @@ function Item({ item }) {
                     <Link to={`/detalle/${item.id}`}>
                         Detalle
                     </Link>
-                    <ItemCount initial={1} stock={5} onAdd={onAdd}/>
+                    <ItemCount initial={1} stock={5} onAdd={onAdd} id={item.id}/>
                 </Card.Body>
             </Card>
         </React.Fragment>

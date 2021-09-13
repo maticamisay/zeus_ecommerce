@@ -13,7 +13,6 @@ function ItemListContainer({greeting}) {
     useEffect(() => {
 
         if(category===undefined){
-            
             tarea
             .then((resp)=> 
                 setTodos(resp),

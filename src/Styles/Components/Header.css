@@ -1,0 +1,23 @@
+.Header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004BA8;
+    color: white;
+}
+.Header-checkout{
+    margin: 0 2rem 0 0.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    justify-items: center;
+    color:white;
+}
+
+.Header a {
+    text-decoration: none;
+    color:white;
+}
+.Header-title{
+    margin: 0 0.5rem 0 2rem;
+}

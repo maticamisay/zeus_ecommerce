@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemListContainer from './components/Containers/ItemListContainer';
 import ItemDetailContainer from './components/Containers/ItemDetailContainer';
 import AppContextProvider from './CustomHooks/AppContextProvider';
+import CartContainer from './components/Containers/CartContainer'
 
 function App() {
 
@@ -25,6 +26,10 @@ function App() {
 
             <Route exact path='/detalle/:id'>
               <ItemDetailContainer />
+            </Route>
+
+            <Route exact path='/cart'>
+              <CartContainer />
             </Route>
 
           </Switch>

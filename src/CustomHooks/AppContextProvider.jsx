@@ -14,6 +14,10 @@ function AppContextProvider({ children }) {
         setCarrito([...carrito, { item: newItem, quantity: cant }])
     }
 
+    const removeFromCart = payload => {
+        setCarrito(carrito.filter(items=>items.id !== payload.id))
+    }
+
     const borrarListado = () => {
         setCarrito([])
     }
@@ -30,7 +34,8 @@ function AppContextProvider({ children }) {
         <AppContext.Provider value={{
             carrito,
             GuardarCarrito,
-            borrarListado
+            borrarListado,
+            removeFromCart
         }}>
             {children}
         </AppContext.Provider>

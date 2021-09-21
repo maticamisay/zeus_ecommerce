@@ -8,30 +8,17 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 function ItemDetail({ producto }) {
-    // const {
-    //     carrito,
-    //     GuardarCarrito,
-    //     cartState,
-    //     setCartState
-    // } = useAddCart([],false);
+
     const [cartState, setCartState] = useState(false);
     const { GuardarCarrito } = useAppContext();
-    // const { producto} = props;
-    // const Count = botonType === 'ItemCount' ?
-    // ItemCount : ButtonCart;
+
     const onAdd = (count) => {
         alert(`Agregar al carrito la cantidad ${count} del item ${producto.id}`);
         setCartState(prevState => !prevState);
-        // const newCarrito = [...carrito];
-        // newCarrito.push({
-        //     id:producto.id,
-        //     cantidad:count,
-        // })
+
 
         GuardarCarrito(producto, count);
     }
-    // console.log(cartState);
-    // console.log(carrito);
     return (
         <React.Fragment>
             <div

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from "react-router";
 import { tarea } from "../../utils/promesas";
 import ItemList from "../Item/ItemList";
+import "./ItemListContainer.css"
 
 function ItemListContainer({greeting}) {
 
@@ -32,9 +33,9 @@ function ItemListContainer({greeting}) {
 
     return (
         <React.Fragment>
-            <p>{greeting}</p>
+            <p className="ItemList-title">{greeting}</p>
             
-            <div className='f'>
+            <div className='ItemList-container'>
                 <div className='container'>
                     <div className='row'>
                         {loading ? (

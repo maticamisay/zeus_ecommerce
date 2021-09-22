@@ -9,7 +9,7 @@ function Header() {
             <h1 className="Header-title">
                 <Link to="/">Zeus Ecommerce</Link>
             </h1>
-            <div>Productos</div>
+            <div><Link to="/categoria/impresion">Impresion</Link></div>
             <div>Contacto</div>
             <div className="Header-checkout">
             

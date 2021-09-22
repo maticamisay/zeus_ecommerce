@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items   : center;
     border        : 5px solid;
-    border-color  : black;
+    border-color  : #24272B;
     overflow       : hidden;
     border-radius  : 1rem;
     width         : fit-content;
@@ -13,7 +13,7 @@
 }
 
 .Product-img {
-    width : 300px;
+    width : 250px;
     height: auto;
 }
 
@@ -25,7 +25,7 @@ li{
     list-style: none;
 }
 
-.card__overlay {
+.Product-overlay {
     position        : absolute;
     bottom          : 0;
     left            : 0;
@@ -38,14 +38,14 @@ li{
 }
 
 
-.card__header {
+.Product-header {
     position        : relative;
     display         : flex;
     align-items     : center;
     gap             : 2em;
-    padding         : 0.5rem;
+    padding         : 0 0.5rem 0.2rem 1rem;
     border-radius   : calc(var(--curve) * 1px) 0 0 0;
-    background-color: black;
+    background-color: #24272B;
     transform       : translateY(-100%);
     transition      : .2s ease-in-out;
 }
@@ -60,36 +60,15 @@ li{
 }
 
 .card__arc path {
-    fill: var(--surface-color);
-    d   : path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+    fill: #24272B;
+    d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
 }
 
-.Products-item:hover .card__header {
+.Products-item:hover .Product-header {
     transform: translateY(0);
 }
 
-.card__thumb {
-    flex-shrink  : 0;
-    width        : 50px;
-    height       : 50px;
-    border-radius: 50%;
-}
-
-.card__title {
-    font-size: 1em;
-    margin   : 0 0 .3em;
-    color    : #6A515E;
-}
-
-.card__tagline {
-    display    : block;
-    margin     : 1em 0;
-    font-family: "MockFlowFont";
-    font-size  : .8em;
-    color      : #D7BDCA;
-}
-
-.card__status {
-    font-size: .8em;
-    color    : #D7BDCA;
+.Product-title{
+    margin: 0;
+    padding: 1rem 0 0 0;
 }

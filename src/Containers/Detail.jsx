@@ -12,15 +12,16 @@ function Detail() {
   const handleAddToCart = (product) => () => {
     addToCart(product);
   };
-  const producto = new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(InitialState.products);
-    }, 1000);
-  });
 
   const { id } = useParams();
 
   useEffect(() => {
+    const producto = new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(InitialState.products);
+      }, 1000);
+    });
+
     producto
       .then((resp) => setProd(resp.filter((r) => id === r.id)))
       .catch((err) => {

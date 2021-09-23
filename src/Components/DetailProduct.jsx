@@ -20,9 +20,9 @@ function DetailProduct({ item,handleAddToCart }) {
               <div className="card">
                 <div className="card__title">
                   <div className="icon">
-                    <a href="#">
+                    {/* <a href="#"> */}
                       <i className="fa fa-arrow-left"></i>
-                    </a>
+                    {/* </a> */}
                   </div>
                   <h3>{product.categoria}</h3>
                 </div>

@@ -6,7 +6,7 @@ const initialState = {
     {
       id: "1",
       nombre: "Cartucho HP 664 Negro",
-      precio: "1600",
+      precio: 1600,
       descripcion: "Cartucho original para HP 664 con 2 ml de tinta",
       url: "https://i.ibb.co/nMD7RsM/hp-664-negro.png",
       categoria: "impresion",

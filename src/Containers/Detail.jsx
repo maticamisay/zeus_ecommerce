@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import DetailProduct from "../Components/DetailProduct";
-import InitialState from "../initialState";
 import { useContext } from "react";
 import AppContext from "../Context/AppContext";
 import { getFirestore } from "../Service/getFirebase";
@@ -19,29 +18,11 @@ function Detail() {
   useEffect(() => {
     const db = getFirestore();
     const queryDB = db.collection("items");
-    console.log(db);
-    const conditionQuery = id ? queryDB.where("id", "==", id) : queryDB;
+    const item = queryDB.doc(id);
 
-    conditionQuery.get().then((data) => {
-      if (data.size === 0) {
-        console.log("no hay nada");
-        console.log(data);
-      }
-      setProd(data.docs.map((item) => ({ id: item.id, ...item.data() })));
-      console.log(id);
+    item.get().then((doc) => {
+      setProd({ id: doc.id, ...doc.data() });
     });
-
-    // const producto = new Promise((resolve) => {
-    //   setTimeout(() => {
-    //     resolve(InitialState.products);
-    //   }, 1000);
-    // });
-
-    // producto
-    //   .then((resp) => setProd(resp.filter((r) => id === r.id)))
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   }, []);
 
   return (

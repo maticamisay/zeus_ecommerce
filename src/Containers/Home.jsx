@@ -7,17 +7,16 @@ import { getFirestore } from "../Service/getFirebase";
 
 function Home() {
   const [prods, setProds] = useState([]);
-
   const { category } = useParams();
 
   useEffect(() => {
     const db = getFirestore();
     const queryDB = db.collection("items");
+    console.log(queryDB);
 
     const conditionQuery = category
       ? queryDB.where("category", "==", category)
       : queryDB;
-    console.log(queryDB);
 
     conditionQuery.get().then((data) => {
       if (data.size === 0) {
@@ -29,7 +28,7 @@ function Home() {
 
     // let productos = new Promise((resolve) => {
     //   setTimeout(() => {
-    //     resolve(initialState.products);
+    //     resolve(products);
     //   }, 1000);
     // });
     // if (category === undefined) {
@@ -40,7 +39,6 @@ function Home() {
     //   );
     // }
   }, [category]);
-  console.log(prods);
   return (
     <div id="container">
       <h1>Bienvenidos a Zeus Ecommerce</h1>

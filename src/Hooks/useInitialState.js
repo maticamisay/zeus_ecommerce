@@ -5,10 +5,22 @@ function useInitialState() {
     const [state, setState] = useState(initialState);
 
     const addToCart = payload => {
+        if( state.cart.some( prod => prod.id === payload.id ) ) { 
+            const producto = state.cart.map( prod => {
+                 if( prod.id === payload.id ) {
+                    prod.cantidad++;
+                       return prod;
+                  } else {
+                       return prod;
+               }
+            })
+            state.cart = [...producto];
+       }  else {
         setState({
             ...state,
             cart:[...state.cart, payload]
         })
+       }
     }
 
     const removeFromCart = payload => {

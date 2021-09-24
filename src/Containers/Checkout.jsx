@@ -11,7 +11,7 @@ function Checkout() {
   }
 
   const handleSumTotal = () => {
-      const reducer = (acumulator, currentValue) => acumulator + parseInt(currentValue.precio);
+      const reducer = (acumulator, currentValue) => acumulator + parseInt(currentValue.precio*currentValue.cantidad);
 	  console.log(reducer);
       const sum = cart.reduce(reducer,0);
 	  console.log(sum);
@@ -27,21 +27,21 @@ function Checkout() {
       </div>
 
       {cart.map((product) => (
-            <div className="Cart-Items">
+            <div className="Cart-Items" key={product.id}>
               <div className="image-box">
-                <img src={product.url} alt="" />
+                <img src={product.url} alt="" className="image-cart"/>
               </div>
               <div className="about">
                 <h1 className="title">{product.nombre}</h1>
-                <h3 className="subtitle">Stock 1</h3>
+                <h3 className="subtitle">Stock 5</h3>
               </div>
               <div className="counter">
                 <div className="btn">+</div>
-                <div className="count">2</div>
+                <div className="count">{product.cantidad}</div>
                 <div className="btn">-</div>
               </div>
               <div className="prices">
-                <div className="amount">$ {product.precio}</div>
+                <div className="amount">$ {product.precio * product.cantidad}</div>
                 <div className="remove" onClick={handleRemove(product)}>
                   <u>Quitar</u>
                 </div>
@@ -53,7 +53,7 @@ function Checkout() {
         <div className="total">
           <div>
             <div className="Subtotal">Sub-Total</div>
-            <div className="items">2 items</div>
+            <div className="items">{cart.length} items</div>
           </div>
           <div className="total-amount">$ {handleSumTotal()}</div>
         </div>

@@ -1,18 +1,27 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../Styles/Containers/Home.css";
 import Products from "../Components/Products";
 import { useParams } from "react-router";
-// import initialState from "../initialState";
 import { getFirestore } from "../Service/getFirebase";
-
+import AppContext from "../Context/AppContext";
 function Home() {
   const [prods, setProds] = useState([]);
   const { category } = useParams();
 
+  const { state, setState } = useContext(AppContext);
+
   useEffect(() => {
     const db = getFirestore();
     const queryDB = db.collection("items");
-    console.log(queryDB);
+
+    queryDB.get().then((data) => {
+      // setState({...state, [ {id: data.id, ...itedatam.data() }]})
+      setProds(data.docs.map((item) => ({ id: item.id, ...item.data() })));
+    });
+    setState({
+      ...state,
+      products: [...prods],
+    });
 
     const conditionQuery = category
       ? queryDB.where("category", "==", category)
@@ -23,22 +32,9 @@ function Home() {
         console.log("no hay nada");
       }
       setProds(data.docs.map((item) => ({ id: item.id, ...item.data() })));
-      console.log(category);
     });
-
-    // let productos = new Promise((resolve) => {
-    //   setTimeout(() => {
-    //     resolve(products);
-    //   }, 1000);
-    // });
-    // if (category === undefined) {
-    //   productos.then((resp) => setProds(resp)); //guardar en el estado
-    // } else {
-    //   productos.then((resp) =>
-    //     setProds(resp.filter((r) => category === r.categoria))
-    //   );
-    // }
   }, [category]);
+
   return (
     <div id="container">
       <h1>Bienvenidos a Zeus Ecommerce</h1>

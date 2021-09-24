@@ -11,7 +11,7 @@ function Checkout() {
   }
 
   const handleSumTotal = () => {
-      const reducer = (acumulator, currentValue) => acumulator + parseInt(currentValue.precio*currentValue.cantidad);
+      const reducer = (acumulator, currentValue) => acumulator + parseInt(currentValue.price*currentValue.cant);
 	  console.log(reducer);
       const sum = cart.reduce(reducer,0);
 	  console.log(sum);
@@ -32,16 +32,16 @@ function Checkout() {
                 <img src={product.url} alt="" className="image-cart"/>
               </div>
               <div className="about">
-                <h1 className="title">{product.nombre}</h1>
-                <h3 className="subtitle">Stock 5</h3>
+                <h1 className="title">{product.name}</h1>
+                <h3 className="subtitle">Stock {product.stock}</h3>
               </div>
               <div className="counter">
                 <div className="btn">+</div>
-                <div className="count">{product.cantidad}</div>
+                <div className="count">{product.cant}</div>
                 <div className="btn">-</div>
               </div>
               <div className="prices">
-                <div className="amount">$ {product.precio * product.cantidad}</div>
+                <div className="amount">$ {product.price * product.cant}</div>
                 <div className="remove" onClick={handleRemove(product)}>
                   <u>Quitar</u>
                 </div>

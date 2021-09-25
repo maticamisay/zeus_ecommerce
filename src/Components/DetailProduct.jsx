@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../Styles/Components/DetailProduct.css";
+import ItemCounter from "../Components/ItemCounter";
 
 function DetailProduct({ item, handleAddToCart }) {
   const [loading, setLoading] = useState(true);
@@ -69,11 +70,8 @@ function DetailProduct({ item, handleAddToCart }) {
                   <p>Producto recomendado por</p>
                   <h3>Zeus Ecommerce</h3>
                 </div>
-                <div className="action">
-                  <button type="button" onClick={handleAddToCart(item)}>
-                    Añadir al carrito
-                  </button>
-                </div>
+                <ItemCounter item={item} handleAddToCart={handleAddToCart}/>
+                
               </div>
             </div>
           </div>

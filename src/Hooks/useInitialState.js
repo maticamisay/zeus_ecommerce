@@ -8,7 +8,7 @@ function useInitialState() {
     if (state.cart.some((prod) => prod.id === payload.id)) {
       const producto = state.cart.map((prod) => {
         if (prod.id === payload.id) {
-          prod.cant++;
+          prod.cant=prod.cant+payload.cant;
           return prod;
         } else {
           return prod;

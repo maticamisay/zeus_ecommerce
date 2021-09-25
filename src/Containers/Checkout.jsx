@@ -12,10 +12,7 @@ function Checkout() {
 
   const handleSumTotal = () => {
       const reducer = (acumulator, currentValue) => acumulator + parseInt(currentValue.price*currentValue.cant);
-	  console.log(reducer);
       const sum = cart.reduce(reducer,0);
-	  console.log(sum);
-
       return sum;
   }
 

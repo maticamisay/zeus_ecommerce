@@ -9,9 +9,9 @@ function Detail() {
   const [prod, setProd] = useState([]);
   const { addToCart } = useContext(AppContext);
 
-  const handleAddToCart = (product) => () => {
-    addToCart(product);
-  };
+  // const handleAddToCart = (product) => () => {
+  //   addToCart(product);
+  // };
 
   const { id } = useParams();
 
@@ -27,7 +27,7 @@ function Detail() {
 
   return (
     <div>
-      <DetailProduct item={prod} handleAddToCart={handleAddToCart} />
+      <DetailProduct item={prod}  />
     </div>
   );
 }

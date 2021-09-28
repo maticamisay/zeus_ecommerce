@@ -3,29 +3,27 @@ import AppContext from "../Context/AppContext";
 import "../Styles/Components/ItemCounter.css";
 
 function ItemCounter({ item }) {
-  const [prod, setProd] = useState(item);
-  // const [disabledButton, setDisabledButton] = useState(false);
+  const [disabledButton, setDisabledButton] = useState(false);
   const [counter, setCounter] = useState(1);
 
-  const { state,addToCart } = useContext(AppContext);
-  const { cart } = state;
+  const { addToCart, carrito } = useContext(AppContext);
 
-  const handleAddToCart = (product,counter) => () => {
-    addToCart(product,counter);
+  const handleAddToCart = (product, counter) => {
+    addToCart(product, counter);
   };
 
   useEffect(() => {
-    if (cart.some((product) => product.id === item.id)) {
-      cart.map((product) => {
-        setProd({ ...prod, stock: prod.stock - product.cant });
-      });
-    }
-    // btn();
     setCounter(1);
-  }, [cart]);
+    const index = carrito.findIndex((i) => i.item.id === item.id);
+    console.log(index);
+    if ((index!==-1) && (carrito[index].quantity >= carrito[index].item.stock)) {
+      console.log("se llego al maximo");
+      setDisabledButton(true);
+    }
+  }, [carrito]);
 
   const handlerAdd = () => {
-    if (counter <= prod.stock) {
+    if (counter < item.stock) {
       setCounter(counter + 1);
     }
   };
@@ -36,9 +34,9 @@ function ItemCounter({ item }) {
   // };
 
   const handlerRemove = () => {
-    if (prod.cant > 1) {
-      setProd({ ...prod, cant: prod.cant - 1 });
-    }
+    // if (item.cant > 1) {
+    //   setProd({ ...item, cant: item.cant - 1 });
+    // }
   };
 
   // const btn = () => {
@@ -49,6 +47,7 @@ function ItemCounter({ item }) {
   // };
   // console.log(prod);
   // console.log(cart);
+  console.log(carrito);
   return (
     <>
       <div className="counter">
@@ -63,13 +62,14 @@ function ItemCounter({ item }) {
       <div className="action">
         <button
           type="button"
-          onClick={handleAddToCart(item,counter)}
-          // className={`${disabledButton ? "disabledButton" : "h"}`}
+          onClick={() => handleAddToCart(item, counter)}
+          className={`${disabledButton ? "disabledButton" : ""}`}
+          disabled={disabledButton}
         >
           Añadir al carrito
         </button>
       </div>
-      <p>{prod.cant}</p>
+      <p>{item.cant}</p>
     </>
   );
 }

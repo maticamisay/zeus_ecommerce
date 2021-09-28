@@ -2,22 +2,20 @@ import { useState } from "react";
 import initialState from "../initialState";
 
 function useInitialState() {
-  const [product, setProducts] = useState([]);
+  const [carrito, setCarrito] = useState([]);
   const [state, setState] = useState(initialState);
 
   const addToCart = (item, quantity) => {
-    const index = product.findIndex((i) => i.item.id === item.id); //
+    const index = carrito.findIndex((i) => i.item.id === item.id);
 
     if (index > -1) {
-      const oldQy = product[index].quantity;
-
-      product.splice(index, 1);
-      setProducts([...product, { item, quantity: quantity + oldQy }]);
+      const oldQy = carrito[index].quantity;
+      carrito.splice(index, 1);
+      setCarrito([...carrito, { item, quantity: quantity + oldQy }]);
     } else {
-      setProducts([...product, { item, quantity }]);
+      setCarrito([...carrito, { item, quantity }]);
     }
 
-    console.log(product);
 
     // if (state.cart.some((prod) => prod.id === payload.id)) {
     //   const producto = state.cart.map((prod) => {
@@ -75,12 +73,14 @@ function useInitialState() {
     });
   };
   return {
+    carrito,
     addToCart,
     removeFromCart,
     addToBuyer,
     addNewOrder,
     state,
     setState,
+
   };
 }
 

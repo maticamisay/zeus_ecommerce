@@ -3,16 +3,16 @@ import AppContext from "../Context/AppContext";
 import "../Styles/Containers/Cart.css";
 
 function Checkout() {
-  const { state, removeFromCart } = useContext(AppContext);
-  const { cart } = state;
+  const { state, removeFromCart,carrito } = useContext(AppContext);
+  // const { cart } = state;
 
   const handleRemove = product => () => {
       removeFromCart(product);
   }
 
   const handleSumTotal = () => {
-      const reducer = (acumulator, currentValue) => acumulator + parseInt(currentValue.price*currentValue.cant);
-      const sum = cart.reduce(reducer,0);
+      const reducer = (acumulator, currentValue) => acumulator + parseInt(currentValue.item.price*currentValue.quantity);
+      const sum = carrito.reduce(reducer,0);
       return sum;
   }
 
@@ -23,22 +23,22 @@ function Checkout() {
         <h5 className="Card-Action">Remove all</h5>
       </div>
 
-      {cart.map((product) => (
-            <div className="Cart-Items" key={product.id}>
+      {carrito.map((product) => (
+            <div className="Cart-Items" key={product.item.id}>
               <div className="image-box">
-                <img src={product.url} alt="" className="image-cart"/>
+                <img src={product.item.url} alt="" className="image-cart"/>
               </div>
               <div className="about">
-                <h1 className="title">{product.name}</h1>
-                <h3 className="subtitle">Stock {product.stock}</h3>
+                <h1 className="title">{product.item.name}</h1>
+                <h3 className="subtitle">Stock {product.item.stock}</h3>
               </div>
               <div className="counter">
                 <div className="btn">+</div>
-                <div className="count">{product.cant}</div>
+                <div className="count">{product.quantity}</div>
                 <div className="btn">-</div>
               </div>
               <div className="prices">
-                <div className="amount">$ {product.price * product.cant}</div>
+                <div className="amount">$ {product.item.price * product.quantity}</div>
                 <div className="remove" onClick={handleRemove(product)}>
                   <u>Quitar</u>
                 </div>
@@ -50,7 +50,7 @@ function Checkout() {
         <div className="total">
           <div>
             <div className="Subtotal">Sub-Total</div>
-            <div className="items">{cart.length} items</div>
+            <div className="items">{carrito.length} items</div>
           </div>
           <div className="total-amount">$ {handleSumTotal()}</div>
         </div>

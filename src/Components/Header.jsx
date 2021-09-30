@@ -4,8 +4,7 @@ import AppContext from "../Context/AppContext";
 import "../Styles/Components/Header.css";
 
 function Header() {
-  const { state } = useContext(AppContext);
-  const { cart } = state;
+  const { carrito } = useContext(AppContext);
   return (
     <div className="Header">
       <h1 className="Header-title">
@@ -19,7 +18,7 @@ function Header() {
         <Link to="/checkout">
           <i className="fas fa-shopping-cart fa-2x" />
         </Link>
-        {cart.length > 0 && <div className="Header-alert">{cart.length}</div>}
+        {carrito.length > 0 && <div className="Header-alert">{carrito.length}</div>}
       </div>
     </div>
   );

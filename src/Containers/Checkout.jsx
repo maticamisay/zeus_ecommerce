@@ -1,20 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import AppContext from "../Context/AppContext";
 import "../Styles/Containers/Cart.css";
 
 function Checkout() {
-  const { state, removeFromCart,carrito } = useContext(AppContext);
+  const { removeFromCart, carrito } = useContext(AppContext);
+  const [carritoRender, setCarritoRender] = useState(carrito)
   // const { cart } = state;
 
-  const handleRemove = product => () => {
-      removeFromCart(product);
-  }
+  const handleRemove = (product) => {
+    console.log('ejecutandose');
+    removeFromCart(product);
+  };
 
   const handleSumTotal = () => {
-      const reducer = (acumulator, currentValue) => acumulator + parseInt(currentValue.item.price*currentValue.quantity);
-      const sum = carrito.reduce(reducer,0);
-      return sum;
-  }
+    const reducer = (acumulator, currentValue) =>
+      acumulator + parseInt(currentValue.item.price * currentValue.quantity);
+    const sum = carrito.reduce(reducer, 0);
+    return sum;
+  };
+
+  useEffect(() => {
+    setCarritoRender(carrito);
+  }, [carrito])
 
   return (
     <div className="CartContainer">
@@ -23,28 +31,28 @@ function Checkout() {
         <h5 className="Card-Action">Remove all</h5>
       </div>
 
-      {carrito.map((product) => (
-            <div className="Cart-Items" key={product.item.id}>
-              <div className="image-box">
-                <img src={product.item.url} alt="" className="image-cart"/>
-              </div>
-              <div className="about">
-                <h1 className="title">{product.item.name}</h1>
-                <h3 className="subtitle">Stock {product.item.stock}</h3>
-              </div>
-              <div className="counter">
-                <div className="btn">+</div>
-                <div className="count">{product.quantity}</div>
-                <div className="btn">-</div>
-              </div>
-              <div className="prices">
-                <div className="amount">$ {product.item.price * product.quantity}</div>
-                <div className="remove" onClick={handleRemove(product)}>
-                  <u>Quitar</u>
-                </div>
-              </div>
+      {carritoRender.map((product) => (
+        <div className="Cart-Items" key={product.item.id}>
+          <div className="image-box">
+            <img src={product.item.url} alt="" className="image-cart" />
+          </div>
+          <div className="about">
+            <h1 className="title">{product.item.name}</h1>
+            <h3 className="subtitle">Stock {product.item.stock}</h3>
+          </div>
+          <div className="counter">
+            <div className="count">Cantidad {product.quantity}</div>
+          </div>
+          <div className="prices">
+            <div className="amount">
+              $ {product.item.price * product.quantity}
             </div>
-          ))}
+            <div className="remove" onClick={()=>handleRemove(product)}>
+              <u>Quitar</u>
+            </div>
+          </div>
+        </div>
+      ))}
       <hr />
       <div className="checkout">
         <div className="total">
@@ -54,7 +62,9 @@ function Checkout() {
           </div>
           <div className="total-amount">$ {handleSumTotal()}</div>
         </div>
-        <button className="button">Checkout</button>
+        <Link to="/checkout/information">
+          <button className="button">Checkout</button>
+        </Link>
       </div>
     </div>
   );

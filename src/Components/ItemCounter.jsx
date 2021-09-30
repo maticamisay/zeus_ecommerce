@@ -16,37 +16,32 @@ function ItemCounter({ item }) {
     setCounter(1);
     const index = carrito.findIndex((i) => i.item.id === item.id);
     console.log(index);
-    if ((index!==-1) && (carrito[index].quantity >= carrito[index].item.stock)) {
+    if (index !== -1 && carrito[index].quantity >= carrito[index].item.stock) {
       console.log("se llego al maximo");
       setDisabledButton(true);
     }
   }, [carrito]);
 
   const handlerAdd = () => {
-    if (counter < item.stock) {
+    const index = carrito.findIndex((i) => i.item.id === item.id);
+    if (index !== -1) {
+      if (
+        carrito[index].quantity < carrito[index].item.stock &&
+        counter + carrito[index].quantity < carrito[index].item.stock
+      ) {
+        setCounter(counter + 1);
+      }
+    } else if (counter < item.stock) {
       setCounter(counter + 1);
     }
   };
 
-  // const handlerAddCart = () => {
-  //   setProd({ ...prod, cant: (prod.cant+counter) });
-  //   addToCart(prod);
-  // };
-
   const handlerRemove = () => {
-    // if (item.cant > 1) {
-    //   setProd({ ...item, cant: item.cant - 1 });
-    // }
+    if (counter > 1) {
+      setCounter(counter - 1);
+    }
   };
 
-  // const btn = () => {
-  //   if (prod.stock <= 0) {
-  //     setDisabledButton(true);
-  //     console.log(disabledButton);
-  //   }
-  // };
-  // console.log(prod);
-  // console.log(cart);
   console.log(carrito);
   return (
     <>
@@ -69,7 +64,6 @@ function ItemCounter({ item }) {
           Añadir al carrito
         </button>
       </div>
-      <p>{item.cant}</p>
     </>
   );
 }

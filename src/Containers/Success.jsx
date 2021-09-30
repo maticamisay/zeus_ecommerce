@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import AppContext from '../Context/AppContext';
 
 function Success() {
+  const { state } =
+  useContext(AppContext);
+
+    console.log(state);
     return (
         <div>
-            success
+            <button type="button" > hola</button>
         </div>
     )
 }

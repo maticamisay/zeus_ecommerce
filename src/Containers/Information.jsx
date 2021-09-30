@@ -4,7 +4,7 @@ import AppContext from '../Context/AppContext'
 import '../Styles/Components/Information.css'
 
 function Information() {
-    const { state, addToBuyer, carrito } = useContext(AppContext);
+    const { addToBuyer, carrito } = useContext(AppContext);
     const form = useRef(null);
     const history = useHistory();
 
@@ -57,7 +57,7 @@ function Information() {
             <div className="Information-sidebar">
                 <h3>Pedido:</h3>
                 {carrito.map((product) => (
-                    <div className="Information-item" key={product.id}>
+                    <div className="Information-item" key={product.item.id}>
                         <div className="Information-element">
                             <h4>{product.item.name}</h4>
                             <span>$ {product.item.price}</span>

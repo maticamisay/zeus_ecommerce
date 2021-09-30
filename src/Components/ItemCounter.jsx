@@ -14,12 +14,19 @@ function ItemCounter({ item }) {
 
   useEffect(() => {
     setCounter(1);
-    const index = carrito.findIndex((i) => i.item.id === item.id);
-    console.log(index);
-    if (index !== -1 && carrito[index].quantity >= carrito[index].item.stock) {
-      console.log("se llego al maximo");
-      setDisabledButton(true);
-    }
+    const maximo = () => {
+      const index = carrito.findIndex((i) => i.item.id === item.id);
+      console.log(index);
+      if (
+        index !== -1 &&
+        carrito[index].quantity >= carrito[index].item.stock
+      ) {
+        console.log("se llego al maximo");
+        setDisabledButton(true);
+      }
+    };
+    maximo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [carrito]);
 
   const handlerAdd = () => {

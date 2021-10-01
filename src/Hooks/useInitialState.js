@@ -23,8 +23,13 @@ function useInitialState() {
     console.log(index);
     if (index > -1) {
       carrito.splice(index, 1);
-      setCarrito(carrito)
+      setCarrito(carrito);
     }
+    const newOrder = {
+      ...state,
+      product: carrito,
+    };
+    setState({ newOrder });
   };
 
   const addToBuyer = (payload) => {
@@ -49,7 +54,6 @@ function useInitialState() {
     addNewOrder,
     state,
     setState,
-
   };
 }
 

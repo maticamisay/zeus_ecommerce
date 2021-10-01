@@ -1,15 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Skeleton from 'react-loading-skeleton';
 import AppContext from "../Context/AppContext";
 import "../Styles/Containers/Cart.css";
 
 function Checkout() {
   const { removeFromCart, carrito } = useContext(AppContext);
-  const [carritoRender, setCarritoRender] = useState(carrito)
-  // const { cart } = state;
+  const [carritoRender, setCarritoRender] = useState(carrito);
+  const [loading, setLoading] = useState(false);
 
   const handleRemove = (product) => {
-    console.log('ejecutandose');
+    console.log("ejecutandose");
     removeFromCart(product);
   };
 
@@ -22,16 +23,22 @@ function Checkout() {
 
   useEffect(() => {
     setCarritoRender(carrito);
-  }, [carrito])
-
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000);
+  }, [carrito]);
+  console.log(carrito);
   return (
     <div className="CartContainer">
       <div className="Card-Header">
         <h3 className="Card-Heading">Shopping Cart</h3>
         <h5 className="Card-Action">Remove all</h5>
       </div>
-
-      {carritoRender.map((product) => (
+      {loading ? 
+       <Skeleton count={5}/>
+      :
+      carritoRender.map((product) => (
         <div className="Cart-Items" key={product.item.id}>
           <div className="image-box">
             <img src={product.item.url} alt="" className="image-cart" />
@@ -47,12 +54,14 @@ function Checkout() {
             <div className="amount">
               $ {product.item.price * product.quantity}
             </div>
-            <div className="remove" onClick={()=>handleRemove(product)}>
+            <div className="remove" onClick={() => handleRemove(product)}>
               <u>Quitar</u>
             </div>
           </div>
         </div>
-      ))}
+      ))
+    }
+      {}
       <hr />
       <div className="checkout">
         <div className="total">

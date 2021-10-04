@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "../Styles/Components/DetailProduct.css";
+import ReactLoading from "react-loading";
 import ItemCounter from "../Components/ItemCounter";
+import { Link } from "react-router-dom";
 
 function DetailProduct({ item, handleAddToCart }) {
   const [loading, setLoading] = useState(true);
@@ -10,21 +12,21 @@ function DetailProduct({ item, handleAddToCart }) {
     }, 2000);
   }, []);
   return (
-    <div>
+    <div className={loading ? "full-width" : ""}>
       {
         loading ? (
-          "Cargando producto"
+          <ReactLoading type="spokes" color="#3E78B2" className="content" />
         ) : (
           <div key={item.id}>
             <div className="card">
-              <div className="card__title">
-                <div className="icon">
-                  {/* <a href="#"> */}
-                  <i className="fa fa-arrow-left"></i>
-                  {/* </a> */}
+              <Link to="/">
+                <div className="card__title">
+                  <div className="icon">
+                    <i className="fa fa-arrow-left"></i>
+                  </div>
+                  <h3 className="card-category">Volver</h3>
                 </div>
-                <h3>{item.category}</h3>
-              </div>
+              </Link>
               <div className="card__body">
                 <div className="half">
                   <div className="featured_text">
@@ -70,8 +72,7 @@ function DetailProduct({ item, handleAddToCart }) {
                   <p>Producto recomendado por</p>
                   <h3>Zeus Ecommerce</h3>
                 </div>
-                <ItemCounter item={item} handleAddToCart={handleAddToCart}/>
-                
+                <ItemCounter item={item} handleAddToCart={handleAddToCart} />
               </div>
             </div>
           </div>

@@ -2,3 +2,7 @@
     pointer-events: auto! important;
     cursor: not-allowed! important;
 }
+
+.counter{
+    padding: 0 1.6rem 0 0;
+}

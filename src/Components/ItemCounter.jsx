@@ -49,8 +49,6 @@ function ItemCounter({ item }) {
     }
   };
 
-  console.log(carrito);
-  console.log(state);
   return (
     <>
       <div className="counter">

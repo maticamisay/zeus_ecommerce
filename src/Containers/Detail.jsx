@@ -6,16 +6,6 @@ import { getFirestore } from "../Service/getFirebase";
 function Detail() {
   const [prod, setProd] = useState([]);
 
-
-  // const fetchBusinesses = useCallback(() => {
-  //   const db = getFirestore();
-  //   const queryDB = db.collection("items");
-  //   const item = queryDB.doc(id);
-  //   item.get().then((doc) => {
-  //     setProd({ id: doc.id, ...doc.data() });
-  //   });
-  // }, [/* additional dependencies */]) 
-
   const { id } = useParams();
   useEffect(() => {
     const db = getFirestore();

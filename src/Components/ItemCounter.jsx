@@ -6,7 +6,7 @@ function ItemCounter({ item }) {
   const [disabledButton, setDisabledButton] = useState(false);
   const [counter, setCounter] = useState(1);
 
-  const { addToCart, carrito,state } = useContext(AppContext);
+  const { addToCart, carrito } = useContext(AppContext);
 
   const handleAddToCart = (product, counter) => {
     addToCart(product, counter);

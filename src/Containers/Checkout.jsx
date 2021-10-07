@@ -36,7 +36,7 @@ function Checkout() {
         <h5 className="Card-Action">Remove all</h5>
       </div>
       {loading ? (
-        <Skeleton count={carrito.length} height="200px" width="90%" />
+        <Skeleton count={carrito.length} height="200px" width="90%" className="Loader"/>
       ) : (
         carritoRender.map((product) => (
           <div className="Cart-Items" key={product.item.id}>

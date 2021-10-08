@@ -16,7 +16,6 @@ function ItemCounter({ item }) {
     setCounter(1);
     const maximo = () => {
       const index = carrito.findIndex((i) => i.item.id === item.id);
-      console.log(index);
       if (
         index !== -1 &&
         carrito[index].quantity >= carrito[index].item.stock
@@ -26,8 +25,7 @@ function ItemCounter({ item }) {
       }
     };
     maximo();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [carrito]);
+  }, [item,carrito]);
 
   const handlerAdd = () => {
     const index = carrito.findIndex((i) => i.item.id === item.id);

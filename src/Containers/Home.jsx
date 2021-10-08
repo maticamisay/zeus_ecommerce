@@ -1,17 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../Styles/Containers/Home.css";
 import Products from "../Components/Products";
 import Modal from "../Modal/Modal";
 import { useParams } from "react-router";
 import { getFirestore } from "../Service/getFirebase";
-import AppContext from "../Context/AppContext";
 import ReactLoading from "react-loading";
 
 function Home() {
   const [prods, setProds] = useState([]);
   const [loading, setLoading] = useState(true);
   const { category } = useParams();
-  const { state, setState } = useContext(AppContext);
 
   useEffect(() => {
     const db = getFirestore();
@@ -19,10 +17,6 @@ function Home() {
 
     queryDB.get().then((data) => {
       setProds(data.docs.map((item) => ({ id: item.id, ...item.data() })));
-    });
-    setState({
-      ...state,
-      products: [...prods],
     });
 
     const conditionQuery = category

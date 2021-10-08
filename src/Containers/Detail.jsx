@@ -14,7 +14,7 @@ function Detail() {
     item.get().then((doc) => {
       setProd({ id: doc.id, ...doc.data() });
     });
-  }, []);
+  }, [id]);
 
   return (
     <div>

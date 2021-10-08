@@ -13,7 +13,6 @@ function DetailProduct({ item, handleAddToCart }) {
     }, 1000);
   }, []);
   return (
-    // <div className={loading ? "full-width" : ""}>
     <div>
       {!!loading && (
         <Modal>

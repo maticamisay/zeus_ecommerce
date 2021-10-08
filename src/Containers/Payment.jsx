@@ -3,6 +3,7 @@ import AppContext from "../Context/AppContext";
 import { useHistory } from "react-router";
 import { PayPalButton } from "react-paypal-button-v2";
 import { getFirestore } from "../Service/getFirebase";
+import '../Styles/Components/Payment.css'
 
 function Payment() {
   const { carrito, state, addNewOrder, setState, setCarrito } =

@@ -26,9 +26,8 @@ function Checkout() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 20000);
+    }, 1500);
   }, [carrito]);
-  console.log(carrito);
   return (
     <div className="CartContainer">
       <div className="Card-Header">

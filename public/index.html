@@ -42,5 +42,26 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    // SDK MercadoPago.js V2
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+
+<script>
+  // Agrega credenciales de SDK
+    const mp = new MercadoPago('TEST-ee109f2a-d4b0-466d-92ed-34438355a3af', {
+          locale: 'es-AR'
+    });
+  
+    // Inicializa el checkout
+    mp.checkout({
+        preference: {
+            id: 'YOUR_PREFERENCE_ID'
+        },
+        render: {
+              container: '.cho-container', // Indica el nombre de la clase donde se mostrará el botón de pago
+              label: 'Pagar', // Cambia el texto del botón de pago (opcional)
+        }
+  });
+  </script>
+  
   </body>
 </html>

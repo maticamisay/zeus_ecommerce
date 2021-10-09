@@ -3,7 +3,7 @@ import AppContext from "../Context/AppContext";
 import { useHistory } from "react-router";
 import { PayPalButton } from "react-paypal-button-v2";
 import { getFirestore } from "../Service/getFirebase";
-import '../Styles/Components/Payment.css'
+import "../Styles/Components/Payment.css";
 
 function Payment() {
   const { carrito, state, addNewOrder, setState, setCarrito } =
@@ -55,37 +55,6 @@ function Payment() {
     }
   };
 
-  // SDK de Mercado Pago
-const mercadopago = require ('mercadopago');
-// Agrega credenciales
-mercadopago.configure({
-  access_token: 'TEST-6671287059027708-100813-b6e84f26d5ce63bfc3e78216be991bc3-174131484'
-});
-// Crea un objeto de preferencia
-// let preference = {
-//   items: [
-//     {
-//       title: 'Mi producto',
-//       unit_price: 100,
-//       quantity: 1,
-//     }
-//   ]
-// };
-  let preference={items:carrito.map((product)=>(
-    {title: product.item.name,
-    unit_price:product.item.price,
-    quantity:product.quantity}
-  ))}
-;
-// let preference = {items:[productos]};
-console.log(preference);
-mercadopago.preferences.create(preference)
-.then(function(response){
-// Este valor reemplazará el string "<%= global.id %>" en tu HTML
-  global.id = response.body.id;
-}).catch(function(error){
-  console.log(error);
-});
 
   return (
     <div className="Payment">

@@ -41,7 +41,6 @@ function Payment() {
       const db = getFirestore();
       const orders = db.collection("orders");
 
-      //controlar si hay los productos que quiero agregar
       orders
         .add(newOrder)
         .then((resp) => alert(`la orden de compra es: ${resp.id}`))
@@ -54,7 +53,6 @@ function Payment() {
       history.push("/checkout/success");
     }
   };
-
 
   return (
     <div className="Payment">

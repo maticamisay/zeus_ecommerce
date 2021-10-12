@@ -19,8 +19,6 @@ function useInitialState() {
 
   const removeFromCart = (payload) => {
     const index = carrito.findIndex((i) => i.item.id === payload.item.id);
-    console.log(payload);
-    console.log(index);
     if (index > -1) {
       carrito.splice(index, 1);
       setCarrito(carrito);

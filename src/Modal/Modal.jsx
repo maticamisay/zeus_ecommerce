@@ -1,5 +1,5 @@
 import reactDom from "react-dom";
-import './Modal.css'
+import '../Styles/Modal/Modal.css'
 
 function Modal({ children }) {
   return reactDom.createPortal(

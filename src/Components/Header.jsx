@@ -11,7 +11,10 @@ function Header() {
         <Link to="/">Zeus Ecommerce</Link>
       </h1>
       <div>
-        <Link to="/categoria/impresion">Impresion</Link>
+        <Link to="/categoria/impresion">Impresión</Link>
+      </div>
+      <div>
+        <Link to="/categoria/computacion">Computación</Link>
       </div>
       <div>Contacto</div>
       <div className="Header-checkout">

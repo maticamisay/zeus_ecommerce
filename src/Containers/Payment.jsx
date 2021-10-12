@@ -78,7 +78,6 @@ function Payment() {
           />
         </div>
       </div>
-      <div>Sidebar</div>
     </div>
   );
 }

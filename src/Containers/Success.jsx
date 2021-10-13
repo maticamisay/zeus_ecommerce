@@ -8,7 +8,7 @@ function Success() {
     console.log(state);
     return (
         <div>
-            <button type="button" > hola</button>
+            <h1>Pago exitoso</h1>
         </div>
     )
 }
